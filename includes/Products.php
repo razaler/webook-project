@@ -34,6 +34,7 @@ class Products
 
   public function read()
   {
+    global $db;
   }
 
   public function update()

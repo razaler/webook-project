@@ -47,7 +47,6 @@ require_once("./components/head.php");
       <button name="login" class="btn-primary-webook py-1" type="submit">Login</button>
     </form>
   </main>
-
   <?php require_once("./components/footer.php") ?>
 </body>
 
