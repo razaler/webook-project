@@ -14,7 +14,7 @@ $btn_href = $isLoggedin ? "./includes/logout.php" : "./login.php";
     <h1>Hello user!</h1>
   <?php else : ?>
     <main class="container px-3">
-      <input class="input-form p-2 mt-4" type="text" placeholder="Search book...">
+      <input class="input-form p-2 mt-4" style="width: 85%" type="text" placeholder="Search book...">
       <button class="btn-search ms-2" name="search" type="submit">
         <i class="icofont-search-1"></i>
       </button>
@@ -28,29 +28,25 @@ $btn_href = $isLoggedin ? "./includes/logout.php" : "./login.php";
         </div>
       </div>
 
-      <div class="row my-3">
-        <div class="col-lg-4 col-sm-4">
-          <img width="fit-content" src="https://picsum.photos/200/300">
+      <?php for ($i = 0; $i <= 3; $i++) : ?>
+        <div class="row my-3 mb-5">
+          <div class="col-4">
+            <div class="px-2">
+              <img width=100% src="https://picsum.photos/200/300">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="px-2">
+              <img width=100% src="https://picsum.photos/200/300">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="px-2">
+              <img width=100% src="https://picsum.photos/200/300">
+            </div>
+          </div>
         </div>
-        <div class="col-lg-4 col-sm-4">
-          <img width="fit-content" src="https://picsum.photos/200/300">
-        </div>
-        <div class="col-lg-4 col-sm-4 ">
-          <img width="fit-content" src="https://picsum.photos/200/300">
-        </div>
-      </div>
-
-      <div class="row my-3">
-        <div class="col-lg-4 col-sm-4">
-          <img src="https://picsum.photos/200/300">
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <img src="https://picsum.photos/200/300">
-        </div>
-        <div class="col-lg-4 col-sm-4">
-          <img src="https://picsum.photos/200/300">
-        </div>
-      </div>
+      <?php endfor; ?>
 
     </main>
   <?php endif; ?>
