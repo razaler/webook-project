@@ -70,13 +70,13 @@ class Users
   {
     global $db;
     $sql = 'SELECT * FROM users WHERE email = "' . $this->email . '"';
-    $result = $db->query($sql)[0];
-    $hash = $result['password'];
-
-    if (password_verify($this->password, $hash)) {
-      return $result;
-    } else {
-      return false;
+    if ($db->query($sql)) {
+      $result = $db->query($sql)[0];
+      $hash = $result['password'];
+      if (password_verify($this->password, $hash)) {
+        return $result;
+      }
     }
+    return false;
   }
 }

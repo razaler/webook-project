@@ -1,6 +1,7 @@
 <?php
 require_once("./includes/Users.php");
 $user = new Users();
+$isError = False;
 
 if (isset($_POST['login'])) {
   $user->email = $_POST['email'];
@@ -10,6 +11,8 @@ if (isset($_POST['login'])) {
     session_start();
     $_SESSION['user'] = $result;
     header("Location: index.php");
+  } else {
+    $isError = True;
   }
 }
 
@@ -23,9 +26,15 @@ require_once("./components/head.php");
   require_once("./components/navbar.php");
   ?>
 
-  <?php if ($_COOKIE['isSuccess']) : ?>
+  <?php if (isset($_COOKIE['isSuccess'])) : ?>
     <div class="alert alert-success position-absolute w-100" role="alert">
       You successfully create an account!
+    </div>
+  <?php endif; ?>
+
+  <?php if ($isError) : ?>
+    <div class="alert alert-danger position-absolute w-100" role="alert">
+      Wrong email or password!
     </div>
   <?php endif; ?>
 
