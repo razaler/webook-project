@@ -79,4 +79,20 @@ class Users
     }
     return false;
   }
+
+  public function changePassword($pass, $hash)
+  {
+    global $db;
+    $data = [
+      ":id" => $this->id,
+      ":password" => password_hash($this->password, PASSWORD_DEFAULT)
+    ];
+
+    if (password_verify($pass, $hash)) {
+      $sql = "UPDATE " . Users::$tableName .  " SET password = :password WHERE id = :id";
+      return $db->query($sql, $data);
+    } else {
+      return false;
+    }
+  }
 }

@@ -1,5 +1,7 @@
 <?php
 session_start();
+//$link1 = 'detail.php?id=' . $item['id'];
+$link2 = 'login.php';
 require_once("./components/head.php");
 require_once("./includes/Products.php");
 $products = new Products();
@@ -61,12 +63,16 @@ $data = $products->read();
     <!-- BOOKS SECTIONS -->
     <section class="books-section mt-3 mb-5">
       <?php foreach ($data as $item) : ?>
-        <div onclick="window.location.href = 'detail.php?id=<?= $item['id'] ?>'" class="card" style="cursor:pointer;">
-          <img width="100%" style="object-fit: cover;" src="./img/<?= $item['photo'] ?>">
-          <h1 class="mb-0 mt-2 ms-1 ms-lg-2" style="font-size:.75rem"><?= $item['book_title'] ?></h1>
-          <p class="ms-lg-2 ms-1" style="font-size: .55rem;">IDR <?= number_format($item['price'], 0, ',', '.'); ?></p>
-        </div>
-      <?php endforeach; ?>
+        <?php if ($isLoggedin) : ?>
+          <div onclick="window.location.href = 'detail.php?id=<?= $item['id'] ?>'" style="cursor:pointer;">
+          <?php else : ?>
+            <div onclick="window.location.href = 'login.php'" style="cursor:pointer;">
+            <?php endif; ?>
+            <img width="100%" style="object-fit: cover;" src="./img/<?= $item['photo'] ?>">
+            <h1 class="mb-0 mt-2 ms-1 ms-lg-2" style="font-size:.75rem"><?= $item['book_title'] ?></h1>
+            <p class="ms-lg-2 ms-1" style="font-size: .55rem;">IDR <?= number_format($item['price'], 0, ',', '.'); ?></p>
+            </div>
+          <?php endforeach; ?>
     </section>
   </main>
 

@@ -3,7 +3,7 @@ $isLoggedin = isset($_SESSION['user']);
 $tabs = [
   [
     "title" => "Changes Password",
-    "link" => "#"
+    "link" => "./change_password.php"
   ],
   [
     "title" => "My Book",
