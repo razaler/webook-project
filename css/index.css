@@ -12,11 +12,20 @@ body {
   box-sizing: border-box;
 }
 
+.fs-res {
+  font-size: 0.75rem;
+}
+
 h1,
 .navbar-brand {
   font-size: 1.5rem;
   color: var(--black);
   font-weight: bold;
+}
+
+.category-list p {
+  margin: 0;
+  font-size: 0.75rem;
 }
 
 .input-form {
@@ -26,10 +35,23 @@ h1,
   width: 100%;
 }
 
+.input-search {
+  border-radius: 8px;
+  border: 2px solid black;
+  padding: 0.5rem;
+  width: 85%;
+}
+
 .btn-search {
   border: none;
   background-color: transparent;
   font-weight: bold;
+}
+
+/* Card info user */
+.card-info {
+  background-color: var(--black);
+  width: 100%;
 }
 
 /* Button webook */
@@ -67,15 +89,69 @@ h1,
 
 /* Button  */
 .btn-topup {
-  border:none;
+  border: none;
   border-radius: 5px;
   background-color: white;
-  width:2rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.books-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  row-gap: 1.5rem;
+}
+
+/* Modal */
+.topup-modal img {
+  border-radius: 8px;
+  width: 15rem;
+  height: 15rem;
+}
+
+.review-container {
+  height: 20rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.review-container::-webkit-scrollbar {
+  border-radius: 16px;
+  width: 0.25rem;
+  background-color: lightgray;
+}
+
+.review-container::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+  border-radius: 16px;
 }
 
 @media (min-width: 992px) {
-  .input-form {
+  .fs-res {
+    font-size: 1rem;
+  }
+
+  .input-search,
+  .card-info {
+    width: 25rem;
+  }
+
+  .category-list p {
+    font-size: 1rem;
+  }
+
+  .books-section {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    row-gap: 1.5rem;
+  }
+
+  /* Modal */
+  .topup-modal img {
+    border-radius: 8px;
     width: 20rem;
+    height: 20rem;
   }
 }

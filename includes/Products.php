@@ -35,6 +35,19 @@ class Products
   public function read()
   {
     global $db;
+
+    $sql = "SELECT * FROM " . Products::$tableName;
+
+    return $db->query($sql);
+  }
+
+  public function readById($id)
+  {
+    global $db;
+
+    $sql = "SELECT * FROM " . Products::$tableName . " WHERE id=" . $id;
+
+    return $db->query($sql)[0];
   }
 
   public function update()
