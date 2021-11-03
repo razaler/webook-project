@@ -2,7 +2,7 @@
   <div class="container">
     <a class="navbar-brand" href="./index.php">WEBOOK</a>
 
-    <?php if (!$isLoggedin) : ?>
+    <?php if (!isset($_SESSION['user'])) : ?>
       <a href="<?= $btn_href ?>" class="btn-primary-webook ml-auto text-decoration-none px-4 py-1"><?= $btn_text ?></a>
     <?php else : ?>
       <div class="row w-50">
