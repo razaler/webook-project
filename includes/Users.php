@@ -56,6 +56,26 @@ class Users
     }
   }
 
+  public function TopUp()
+  {
+    global $db;
+
+    // Balance user
+    $balance = $this->read($this->id)['balance'];
+
+    $data = [
+      ":id" => $this->id,
+      // Balance update
+      ":balance" => $balance + 50000
+    ];
+    $sql = "UPDATE " . Users::$tableName .  " SET balance = :balance WHERE id = :id";
+    if ($db->query($sql, $data)) {
+      return $this->read($this->id)["balance"];
+    } else {
+      return false;
+    }
+  }
+
   public function delete($id)
   {
     global $db;

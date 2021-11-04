@@ -50,6 +50,15 @@ class Products
     return $db->query($sql)[0];
   }
 
+  public function getPrice($id)
+  {
+    global $db;
+
+    $sql = "SELECT price FROM " . Products::$tableName . " WHERE id=" . $id;
+
+    return $db->query($sql)[0];
+  }
+
   public function update()
   {
   }

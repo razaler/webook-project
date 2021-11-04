@@ -64,6 +64,15 @@ h1,
   cursor: pointer;
 }
 
+.btn-secondary-webook {
+  border: none !important;
+  background-color: gray;
+  color: white !important;
+  text-transform: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .btn-primary-webook:hover {
   background-color: var(--light-black);
 }

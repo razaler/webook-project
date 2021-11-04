@@ -1,16 +1,22 @@
 <?php
 session_start();
-//$link1 = 'detail.php?id=' . $item['id'];
-$link2 = 'login.php';
 require_once("./components/head.php");
 require_once("./includes/Products.php");
+require_once("./includes/Users.php");
+
 $products = new Products();
 $sortArr = ['New Releases', 'Top Commented', 'Top Selling', 'Favorite Books'];
+
 $isLoggedin = isset($_SESSION['user']);
+
 $btn_text = $isLoggedin ? "Logout" : "Login";
 $btn_href = $isLoggedin ? "./includes/logout.php" : "./login.php";
-
 $data = $products->read();
+
+// Dapetin balance terbaru
+$user = new Users();
+$currentBalance = $user->read($_SESSION['user']['id'])['balance'];
+
 ?>
 
 <body class="px-2">
@@ -28,10 +34,11 @@ $data = $products->read();
         <div class="container px-3 py-2 d-flex justify-content-between">
           <span>
             <p style="color:white;" class="mb-0">Total saldo</p>
-            <h1 style="color:white;" class="fs-6 fs-lg-4">IDR 700.000</h1>
+            <h1 class="user-balance" style="color:white;" class="fs-6 fs-lg-4">IDR <?= number_format($currentBalance, 0, ',', '.'); ?></h1>
           </span>
 
           <span class='d-flex align-items-center justify-content-center'>
+            <input type="hidden" id="user_id" value=<?= $_SESSION['user']['id'] ?>>
             <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-topup">
               <i class="icofont-plus"></i>
               <p class="mb-0" style="font-size:0.5rem; font-weight:bold;">Top Up</p>

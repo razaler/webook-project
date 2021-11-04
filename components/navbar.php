@@ -1,3 +1,8 @@
+<?php
+require_once("./includes/Users.php");
+$user = new Users();
+$currentBalance = $user->read($_SESSION['user']['id'])['balance']; ?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="./index.php">WEBOOK</a>
@@ -8,7 +13,8 @@
       <div class="row w-50">
         <div class="col-9 col-lg-11 pe-0">
           <p class="m-0 fw-bold text-end" style="font-size:0.6rem"><?= $_SESSION['user']["first_name"] . ' ' . $_SESSION['user']["last_name"] ?></p>
-          <p class="m-0 text-end" style="font-size:0.6rem">IDR 700.000</p>
+
+          <p class="navbar-balance m-0 text-end" style="font-size:0.6rem">IDR <?= number_format($currentBalance, 0, ',', '.'); ?></p>
         </div>
 
         <div onclick="window.location.href='profile.php'" style="cursor: pointer;" class="col-3 col-lg-1 px-0 d-flex justify-content-center align-items-center">
