@@ -32,6 +32,15 @@ class Transactions
         return $db->query($sql);
     }
 
+    public function getMyBooks()
+    {
+        global $db;
+
+        $sql = "SELECT p.photo , p.id , p.book_title FROM transaction t JOIN products p WHERE t.product_id = p.id AND t.user_id = " . $this->user_id;
+
+        return $db->query($sql);
+    }
+
     public function buy()
     {
         global $db;

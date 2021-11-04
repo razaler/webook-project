@@ -7,21 +7,25 @@ $tabs = [
   ],
   [
     "title" => "My Book",
-    "link" => "#"
+    "link" => "./mybook.php"
   ],
   [
     "title" => "Wishlist",
-    "link" => "#"
+    "link" => "./wishlist.php"
   ],
   [
     "title" => "Sell Book",
-    "link" => "#"
+    "link" => "./sellbook.php"
   ],
   [
     "title" => "Logout",
     "link" => "./includes/logout.php"
   ],
 ];
+
+if (!$_SESSION['user']['is_admin']) {
+  unset($tabs[3]);
+}
 
 
 ?>

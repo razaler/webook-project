@@ -136,6 +136,15 @@ h1,
   border-radius: 16px;
 }
 
+.header-title {
+  background-color: var(--black);
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  border-radius: 16px;
+  color: white;
+}
+
 @media (min-width: 992px) {
   .fs-res {
     font-size: 1rem;

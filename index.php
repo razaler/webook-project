@@ -15,7 +15,9 @@ $data = $products->read();
 
 // Dapetin balance terbaru
 $user = new Users();
-$currentBalance = $user->read($_SESSION['user']['id'])['balance'];
+if (isset($_SESSION['user'])) {
+  $currentBalance = $user->read($_SESSION['user']['id'])['balance'];
+}
 
 ?>
 
@@ -75,7 +77,7 @@ $currentBalance = $user->read($_SESSION['user']['id'])['balance'];
           <?php else : ?>
             <div onclick="window.location.href = 'login.php'" style="cursor:pointer;">
             <?php endif; ?>
-            <img width="100%" style="object-fit: cover;" src="./img/<?= $item['photo'] ?>">
+            <img width="100%" style="height: 10rem; object-fit: cover;" src="./img/<?= $item['photo'] ?>">
             <h1 class="mb-0 mt-2 ms-1 ms-lg-2" style="font-size:.75rem"><?= $item['book_title'] ?></h1>
             <p class="ms-lg-2 ms-1" style="font-size: .55rem;">IDR <?= number_format($item['price'], 0, ',', '.'); ?></p>
             </div>
