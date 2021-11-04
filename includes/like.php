@@ -40,6 +40,14 @@ class Like
         return isset($db->query($sql)[0]);
     }
 
+    public function getWishlist()
+    {
+        global $db;
+
+        $sql = "SELECT p.id , p.book_title, p.photo, p.price FROM likes l JOIN products p WHERE p.id = l.product_id AND l.user_id = " . $this->user_id;
+        return $db->query($sql);
+    }
+
     //update tidak ada langsung dihapus
     public function hapus()
     {

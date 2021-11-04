@@ -1,7 +1,11 @@
 <?php
 require_once("./includes/Users.php");
 $user = new Users();
-$currentBalance = $user->read($_SESSION['user']['id'])['balance']; ?>
+if (isset($_SESSION['user'])) {
+  $currentBalance = $user->read($_SESSION['user']['id'])['balance'];
+}
+?>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">

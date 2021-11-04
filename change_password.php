@@ -37,7 +37,7 @@ if (isset($_POST['change_password'])) {
     <main class="container w-100 d-flex justify-content-center">
         <form class="login-form mt-4 mb-5 d-flex flex-column" style="width: 20rem;" action="" method="post">
             <p class="mb-0">Old Password</p>
-            <input class="input-form mb-3" type="o_password" name="o_password" id="o_password" placeholder="Old Password" required>
+            <input class="input-form mb-3" type="password" name="o_password" id="o_password" placeholder="Old Password" required>
 
             <p class="mb-0">New Password</p>
             <input class="input-form mb-3" type="password" name="n_password" id="n_password" placeholder="New Password" required>
