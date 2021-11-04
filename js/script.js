@@ -1,8 +1,9 @@
-const comments_container = document.querySelector(".review-container");
-comments_container.scrollTop =
-  comments_container.scrollHeight - comments_container.clientHeight;
+// const comments_container = document.querySelector(".review-container");
+// comments_container.scrollTop =
+//   comments_container.scrollHeight - comments_container.clientHeight;
 
 
+// Likes
 $('.likes-button').click((e) => {
   const user_id = $("#user_id").val()
   const product_id = $("#product_id").val()
@@ -24,4 +25,16 @@ $('.likes-button').click((e) => {
     $('.likes-button').removeClass("fas").addClass("far");
   }
 
+});
+
+$(".btn-topup").click((e) => {
+  const user_id = $("#user_id").val()
+
+  $.post("../ToupBalance.php", {
+    user_id,
+  }, (data, status) => {
+    $(".user-balance").html(data);
+    const currentBalance = $("#currentBalance").val();
+    $(".navbar-balance").html("IDR " + currentBalance)
+  })
 });
