@@ -73,8 +73,8 @@ $comments = new Comments();
   <div class="container border-bottom pb-4">
 
     <div class="row">
-      <div class="col-6">
-        <img style="height: 15rem; object-fit: cover;" class="w-100" src="./img/<?= $data['photo'] ?>" alt="">
+      <div class="col-6 col-lg-3">
+        <img class="book_cover_detail" style="height: 15rem; object-fit: cover;" class="w-100" src="./img/<?= $data['photo'] ?>" alt="">
 
         <div class="post-desc d-flex my-0 align-items-center"></div>
         <input type="hidden" id="user_id" value=<?= $_SESSION['user']['id'] ?>>
@@ -91,7 +91,7 @@ $comments = new Comments();
         </span>
       </div>
 
-      <div class="col-6">
+      <div class="col-6 col-lg-9">
         <h1><?= $data['book_title'] ?></h1>
         <p class="fs-res mb-1">Author : <?= $data['author'] ?></p>
         <p class="fs-res"><?= substr($data['description'], 0, 200) ?></p>
@@ -140,12 +140,12 @@ $comments = new Comments();
     </div>
 
     <div class="row">
-      <div class="col-9">
+      <div class="col-9 col-lg-11">
         <input type="hidden" id="product_comment_id" name="product_id" value=<?= $_GET['id'] ?>>
         <input type="hidden" id="user_comment_id" name="user_id" value=<?= $_SESSION['user']['id'] ?>>
         <input style="border:none; border:2px solid black; border-radius: 4px;" class="mt-2 w-100 px-3 py-2 mb-5" type="text" id="comments" name="reviews" placeholder="Write your comments here!">
       </div>
-      <div class="col-3 mt-3 align-items-center">
+      <div class="col-3 col-lg-1 mt-3 align-items-center">
         <button class="btn-comment btn-primary-webook px-2">SEND</button>
       </div>
     </div>

@@ -145,7 +145,26 @@ h1,
   color: white;
 }
 
+/* Book cover */
+.book_cover {
+  height: 10rem;
+  object-fit: cover;
+}
+.book_cover_detail {
+  height: 15rem;
+  object-fit: cover;
+}
+
 @media (min-width: 992px) {
+  /* Book cover */
+  .book_cover {
+    height: 15rem;
+  }
+
+  .book_cover_detail {
+    height: 20rem;
+  }
+
   .fs-res {
     font-size: 1rem;
   }

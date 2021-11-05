@@ -71,17 +71,19 @@ if (isset($_SESSION['user'])) {
 
     <!-- BOOKS SECTIONS -->
     <section class="books-section mt-3 mb-5">
+
       <?php foreach ($data as $item) : ?>
         <?php if ($isLoggedin) : ?>
           <div onclick="window.location.href = 'detail.php?id=<?= $item['id'] ?>'" style="cursor:pointer;">
           <?php else : ?>
             <div onclick="window.location.href = 'login.php'" style="cursor:pointer;">
             <?php endif; ?>
-            <img width="100%" style="height: 10rem; object-fit: cover;" src="./img/<?= $item['photo'] ?>">
+            <img class="book_cover" width="100%" src="./img/<?= $item['photo'] ?>">
             <h1 class="mb-0 mt-2 ms-1 ms-lg-2" style="font-size:.75rem"><?= $item['book_title'] ?></h1>
             <p class="ms-lg-2 ms-1" style="font-size: .55rem;">IDR <?= number_format($item['price'], 0, ',', '.'); ?></p>
             </div>
           <?php endforeach; ?>
+
     </section>
   </main>
 
