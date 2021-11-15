@@ -23,16 +23,22 @@ if (isset($_GET['sort'])) {
   $data = $products->sort($_GET['sort']);
 }
 
+if (isset($_POST['search'])) {
+  $data = $products->searchProduct($_POST['input_search']);
+}
+
 ?>
 
 <body class="px-2">
   <?php require_once("./components/navbar.php"); ?>
 
   <main class="container">
-    <input class="input-search p-2 mt-4" type="text" placeholder="Search book...">
-    <button class="btn-search ms-2" name="search" type="submit">
-      <i class="icofont-search-1"></i>
-    </button>
+    <form method="post" action="index.php">
+      <input class="input-search p-2 mt-4" name="input_search" type="text" placeholder="Search book...">
+      <button class="btn-search ms-2" name="search" type="submit">
+        <i class="icofont-search-1"></i>
+      </button>
+    </form>
 
     <!-- BALANCE CARD -->
     <?php if ($isLoggedin) : ?>
