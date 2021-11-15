@@ -100,7 +100,7 @@ $comments = new Comments();
             <button class="w-100 btn-primary-webook px-4 py-2 fs-res" data-bs-toggle="modal" data-bs-target="#modal"><b>BUY</b> IDR <?= number_format($data['price'], 0, ',', '.'); ?></button>
             <p class="fs-res text-center"><b>Balance</b> IDR <?= number_format($currentBalance, 0, ',', '.'); ?></p>
           <?php else : ?>
-            <a class="btn-primary-webook text-decoration-none px-3 py-2" href="./pdf/<?= $data['file'] ?>" download>Download</a>
+            <a class="btn-primary-webook text-decoration-none px-3 py-2" href="./pdf.php?id=<?= $data['id'] ?>">Read</a>
           <?php endif; ?>
         </div>
       </div>

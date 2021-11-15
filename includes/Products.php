@@ -92,6 +92,15 @@ class Products
     return $db->query($sql)[0];
   }
 
+  public function searchProduct($keyword)
+  {
+    global $db;
+
+    $sql = "SELECT * FROM " . Products::$tableName . " WHERE book_title LIKE '%$keyword%'";
+
+    return $db->query($sql);
+  }
+
   public function getPrice($id)
   {
     global $db;

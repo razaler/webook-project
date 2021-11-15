@@ -68,3 +68,4 @@ if (window.location.href.includes("detail.php")) {
 }
 
 
+
