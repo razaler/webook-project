@@ -55,6 +55,34 @@ class Products
     return $db->query($sql);
   }
 
+  public function sort($type)
+  {
+    global $db;
+
+    switch ($type) {
+      case 'new-releases':
+        $sql = "SELECT * FROM " . Products::$tableName . " ORDER BY created_at DESC";
+        break;
+
+      case 'top-commented':
+        $sql = "SELECT p.id , p.book_title, p.description , p.photo , p.price, COUNT(c.product_id) as total_comments FROM products p LEFT JOIN comments c ON p.id = c.product_id GROUP BY p.id ORDER BY total_comments DESC";
+        break;
+
+      case 'top-selling':
+        $sql = "SELECT p.id , p.book_title, p.description , p.photo , p.price, COUNT(t.product_id) as total_transaction FROM products p LEFT JOIN transaction t ON p.id = t.product_id GROUP BY p.id  ORDER BY total_transaction DESC";
+        break;
+
+      case 'favorite-books':
+        $sql = "SELECT p.id , p.book_title, p.description , p.photo , p.price, COUNT(l.product_id) as total_likes FROM products p LEFT JOIN likes l ON p.id = l.product_id GROUP BY p.id ORDER BY total_likes DESC";
+        break;
+
+      default:
+        $sql = "SELECT * FROM " . Products::$tableName;
+        break;
+    }
+    return $db->query($sql);
+  }
+
   public function readById($id)
   {
     global $db;

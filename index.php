@@ -19,6 +19,10 @@ if (isset($_SESSION['user'])) {
   $currentBalance = $user->read($_SESSION['user']['id'])['balance'];
 }
 
+if (isset($_GET['sort'])) {
+  $data = $products->sort($_GET['sort']);
+}
+
 ?>
 
 <body class="px-2">
@@ -62,7 +66,8 @@ if (isset($_SESSION['user'])) {
       <h1 class="mb-1">SORT BY</h1>
       <div class="category-container">
         <?php for ($i = 0; $i < count($sortArr); $i++) : ?>
-          <span class="category-list mt-2 me-3">
+          <?php $sort = strtolower(str_replace(" ", "-", $sortArr[$i])) ?>
+          <span onclick="window.location.href = 'index.php?sort=<?= $sort ?>'" class="category-list mt-2 me-3">
             <p><?= $sortArr[$i] ?></p>
           </span>
         <?php endfor; ?>

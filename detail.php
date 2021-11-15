@@ -74,7 +74,7 @@ $comments = new Comments();
 
     <div class="row">
       <div class="col-6 col-lg-3">
-        <img class="book_cover_detail" style="height: 15rem; object-fit: cover;" class="w-100" src="./img/<?= $data['photo'] ?>" alt="">
+        <img class="book_cover_detail w-100" style="height: 15rem; object-fit: cover;" src="./img/<?= $data['photo'] ?>">
 
         <div class="post-desc d-flex my-0 align-items-center"></div>
         <input type="hidden" id="user_id" value=<?= $_SESSION['user']['id'] ?>>
