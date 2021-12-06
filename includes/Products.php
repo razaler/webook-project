@@ -46,6 +46,24 @@ class Products
     }
   }
 
+  public function update()
+  {
+    global $db;
+
+    $data = [
+      ":id" => $this->id,
+      ":description" => $this->description,
+      ":book_title" => $this->book_title,
+      ":price" => $this->price,
+      ":author" => $this->author,
+    ];
+    $sql = "UPDATE " . Products::$tableName .  " SET description = :description, book_title = :book_title, price = :price, author= :author WHERE id = :id";
+    $result = $db->query($sql, $data);
+    if ($result) {
+      header('Location: detail.php?id=' . $this->id);
+    }
+  }
+
   public function read()
   {
     global $db;

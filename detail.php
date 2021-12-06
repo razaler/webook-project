@@ -96,12 +96,24 @@ $comments = new Comments();
         <p class="fs-res mb-1">Author : <?= $data['author'] ?></p>
         <p class="fs-res"><?= substr($data['description'], 0, 200) ?></p>
         <div>
-          <?php if (!$isTransaction) : ?>
-            <button class="w-100 btn-primary-webook px-4 py-2 fs-res" data-bs-toggle="modal" data-bs-target="#modal"><b>BUY</b> IDR <?= number_format($data['price'], 0, ',', '.'); ?></button>
-            <p class="fs-res text-center"><b>Balance</b> IDR <?= number_format($currentBalance, 0, ',', '.'); ?></p>
-          <?php else : ?>
-            <a class="btn-primary-webook text-decoration-none px-3 py-2" href="./pdf.php?id=<?= $data['id'] ?>">Read</a>
+          <?php if ($data['user_id'] == $_SESSION['user']['id']) : ?>
+            <!-- Jika pengguna merupakan si penjual buku -->
+            <a class="btn-primary-webook text-decoration-none px-3 py-2" href="./update_book.php?id=<?= $data['id'] ?>">Edit</a>
           <?php endif; ?>
+
+          <?php if (!$isTransaction && !($data['user_id'] == $_SESSION['user']['id'])) : ?>
+            <!-- Belum membeli -->
+            <button class="w-100 btn-primary-webook px-4 py-2 fs-res" data-bs-toggle="modal" data-bs-target="#modal"><b>BUY</b> IDR <?= number_format($data['price'], 0, ',', '.'); ?></button>
+
+            <p class="fs-res text-center"><b>Balance</b> IDR <?= number_format($currentBalance, 0, ',', '.'); ?></p>
+
+          <?php else : ?>
+
+            <!-- Sudah membeli -->
+            <a class="btn-primary-webook text-decoration-none px-3 py-2" href="./pdf.php?id=<?= $data['id'] ?>">Read</a>
+
+          <?php endif; ?>
+
         </div>
       </div>
 
@@ -152,4 +164,4 @@ $comments = new Comments();
   </div>
 </body>
 
-<?php require_once('./components/footer.php') ?>
+<?php require_once('./components/footer.php'); ?>
